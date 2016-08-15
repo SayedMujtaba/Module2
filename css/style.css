@@ -1,0 +1,35 @@
+/*
+Notice how you are also able to specify different browser behaviour using the prefixes:
+
+-o- for Presto based (Opera -NB: deprecated, moved to Webkit based)
+-moz- for Gecko based (Firefox)
+-webkit- for Webkit based (Chrome/Safari)
+Note: if you have multiple css files, the order in which you include them in the html file matters as they are "cascading" and will override.
+*/
+
+html { 
+    background: url("http://theme.dima-lab.com/okab/images/landing-page-iphone/blurred-home-bg.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+h2#page-header {
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+body #page-container {
+    margin-top: 150px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.btn-wrapper {
+    padding: 20px 0;
+}
+
+input#my-file-selector {
+    display:none;
+}
