@@ -8,11 +8,16 @@ Note: if you have multiple css files, the order in which you include them in the
 */
 
 html { 
-    background: url("http://theme.dima-lab.com/okab/images/landing-page-iphone/blurred-home-bg.jpg") no-repeat center center fixed; 
+    background: url("http://www.publicdomainpictures.net/pictures/170000/velka/grunge-background-14635619239LT.jpg") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+body{
+    color: white;
+    background-color: transparent;  
 }
 
 h2#page-header {
@@ -30,6 +35,7 @@ body #page-container {
     padding: 20px 0;
 }
 
-input#my-file-selector {
-    display:none;
+
+h1#textarea {
+    font-size:84px;
 }

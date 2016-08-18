@@ -12,6 +12,19 @@
     </head>
     <body>
     
+        <div class="container" id="page-container">
+            <h2 id="page-header"> Audio TO Text</h2>
+             <div class="btn-wrapper">
+                <button type="button" class="btn btn-success" id="record"><span class="glyphicon glyphicon-record" id="recordIcon"></span> Start Speaking</button>
+            </div>
+            <form role="form">
+                <div class="form-group">
+                    <label for="comment">TextOuput:</label>
+                    <textarea class="form-control" rows="6"  id="toutput" disabled></textarea>
+                </div>
+            </form>
+        </div>
+
 
 
 
@@ -29,6 +42,6 @@
         <!--Bootstrap Script-->
         <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <!--Custom Script-->
-        <script src="./js/basic.js"></script>
+        <script src="./js/main.js"></script>
     </body>
 </html>
