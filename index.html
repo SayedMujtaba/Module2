@@ -24,17 +24,17 @@
               </fieldset>
                 <div class="form-group">
                     <label for="t">Title:</label>
-                    <input type="text" class="form-control" id="t" placeholder="Required">
+                    <input type="text" class="form-control" name="t" id="t" placeholder="Required" required>
                     <label for="y">Year:</label>
-                    <input type="number" class="form-control" id="y" placeholder="Optional">
+                    <input type="number" class="form-control" name="y" id="y" placeholder="Optional">
                    <label for="plot">Plot:</label>
                    <select name="plot" id="plot">
                      <option value="short" selected>Short</option>
                      <option value="full">Full</option>                     
                    </select>
                    <br/>
-                   <button type="button" class="btn-sm btn-primary" id="btnSearch-by-title"><span class="glyphicon glyphicon-search"></span> Serach</button>
-                   <button type="reset" class="btn-sm" id="btnReset-by-title"><span class="glyphicon glyphicon-reset"></span> Reset</button>
+                   <button type="button" class="btn-sm btn-primary" id="btnSearch-title"><span class="glyphicon glyphicon-search"></span> Serach</button>
+                   <button type="reset" class="btn-sm" id="btnReset-title"><span class="glyphicon glyphicon-reset"></span> Reset</button>
                     <!--<textarea class="form-control" rows="6"  id="toutput"></textarea>-->
                 </div>
             </form>
