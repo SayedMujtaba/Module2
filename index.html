@@ -13,19 +13,33 @@
     <body>
     
         <div class="container" id="page-container">
-            <h2 id="page-header"> Movie Review (IMDB)</h2>
-             <div class="btn-wrapper">
+            <h2 id="page-header"> IMDB - Movies and Shows Reviews</h2>
+           <!--  <div class="btn-wrapper">
                 <button type="button" class="btn btn-success" id="record"><span class="glyphicon glyphicon-record" id="recordIcon"></span> Start Speaking</button>
-            </div>
-            <form role="form">
+            </div>-->
+            <div class="contain-fluid" id="sidePanel">
+              <form role="search" id="searchByTitle" onsubmit="return false;">
               <fieldset>
                 <legend>Search by Title</legend>
               </fieldset>
                 <div class="form-group">
-                    <label for="comment">Title:</label>
-                    <textarea class="form-control" rows="6"  id="toutput"></textarea>
+                    <label for="t">Title:</label>
+                    <input type="text" class="form-control" id="t" placeholder="Required">
+                    <label for="y">Year:</label>
+                    <input type="number" class="form-control" id="y" placeholder="Optional">
+                   <label for="plot">Plot:</label>
+                   <select name="plot" id="plot">
+                     <option value="short" selected>Short</option>
+                     <option value="full">Full</option>                     
+                   </select>
+                   <br/>
+                   <button type="button" class="btn-sm btn-primary" id="btnSearch-by-title"><span class="glyphicon glyphicon-search"></span> Serach</button>
+                   <button type="reset" class="btn-sm" id="btnReset-by-title"><span class="glyphicon glyphicon-reset"></span> Reset</button>
+                    <!--<textarea class="form-control" rows="6"  id="toutput"></textarea>-->
                 </div>
             </form>
+            </div>
+           
             <div id="player"></div>
         </div>
 

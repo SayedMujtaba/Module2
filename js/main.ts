@@ -7,7 +7,7 @@ record.onclick = function chgColor():void{
     if(record.className == 'btn btn-success'){
         record.className = "btn btn-danger";
         ricon.className = "glyphicon glyphicon-stop";
-        sendRequest(function(movieData){
+        sendOmdbRequest(function(movieData){
             toutput.innerHTML =  movieData.Year;
         });
     }else{
@@ -18,7 +18,7 @@ record.onclick = function chgColor():void{
    
 }
 
-function sendRequest(callback) : void {
+function sendOmdbRequest(callback) : void {
     $.ajax({
         url: "http://www.omdbapi.com/?t=Another",
        /* beforeSend: function (xhrObj) {
