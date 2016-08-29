@@ -20,6 +20,11 @@ body{
     background-color: transparent;  
 }
 
+#toutput {
+    width: 60%;
+    margin-left: 20%; 
+    
+}
 h2#page-header {
     padding-top:20px;
     padding-bottom:20px;
