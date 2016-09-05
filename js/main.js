@@ -54,6 +54,7 @@ function showOutput(data) {
     document.getElementById("imdbrating").innerText = data.imdbRating;
     document.getElementById("imdbvotes").innerText = data.imdbVotes;
     document.getElementById("type").innerText = data.type;
+    document.getElementById("year").innerText = data.year;
     if (data.type != "movie") {
         document.getElementById("tSeasons").style.visibility = "visible";
         document.getElementById("totalseason").style.visibility = "visible";
@@ -64,6 +65,10 @@ function showOutput(data) {
         document.getElementById("tSeasons").style.visibility = "hidden";
     }
 }
+btnReset.onclick = function () {
+    form.remove;
+    output.style.visibility = "hidden";
+};
 btnSearch.onclick = function () {
     var userdata = form.serialize();
     console.log(userdata.length);
