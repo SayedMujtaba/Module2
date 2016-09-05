@@ -12,36 +12,52 @@
     </head>
     <body>
     
-        <div class="container" id="page-container">
+        <div class="wrapper" id="page-container">
             <h2 id="page-header"> OMDB - Movies and Shows Reviews</h2>
-           <!--  <div class="btn-wrapper">
-                <button type="button" class="btn btn-success" id="record"><span class="glyphicon glyphicon-record" id="recordIcon"></span> Start Speaking</button>
-            </div>-->
-            <div class="contain-fluid" id="sidePanel">
-              <form role="search" id="searchByTitle" onsubmit="return false;">
-              <fieldset>
-                <legend>Search by Title</legend>
-              </fieldset>
+
+            <div class="float-left" id="sidePanel">
+              <form role="search" id="searchByTitle" onsubmit="return false;" action="action_page.php">
+                <fieldset>
+                  <legend>Search by Title</legend>
+                </fieldset>
                 <div class="form-group">
                     <label for="t">Title:</label>
                     <input type="text" class="form-control" name="t" id="t" placeholder="Required" required>
                     <label for="y">Year:</label>
-                    <input type="number" class="form-control" name="y" id="y" placeholder="Optional">
-                   <label for="plot">Plot:</label>
-                   <br/>
-                   <select name="plot" id="plot">
-                     <option value="short" selected>Short</option>
-                     <option value="full">Full</option>                     
-                   </select>
-                   <br/>
-                   <button type="button" class="btn-sm btn-primary" id="btnSearch-title"><span class="glyphicon glyphicon-search"></span> Serach</button>
-                   <button type="reset" class="btn-sm" id="btnReset-title"><span class="glyphicon glyphicon-reset"></span> Reset</button>
-                    <!--<textarea class="form-control" rows="6"  id="toutput"></textarea>-->
+                    <input type="number" class="form-control" name="y" id="y" placeholder="Optional" min="1990" maxlength="2016">
+                    <label for="plot">Plot:</label>
+                    <br/>
+                    <select name="plot" id="plot">
+                      <option value="short" selected>Short</option>
+                      <option value="full">Full</option>                     
+                    </select>
+                    <br/>
+                    <button type="button" class="btn-sm btn-primary" id="btnSearch-title"><span class="glyphicon glyphicon-search"></span> Serach</button>
+                    <button type="reset" class="btn-sm" id="btnReset-title"> Reset</button>
                 </div>
-            </form>
+              </form>
             </div>
-           
-            <div id="output"></div>
+            
+            <div class="float-right well well-sm" id="output" style="visibility: hidden">
+              <h2>Title: <span id="title"></span> </h2>
+              <img src="" alt="Poster" id="poster">
+              <h4>Plot: <span id="story"></span></h4>
+              <h4>Released: <span id="released"></span></h4>
+              <h4>Rated: <span id="rated"></span></h4>
+              <h4>Genre: <span id="genre"></span></h4>
+              <h4>Runtime: <span id="runtime"></span></h4>
+              <h4>Director: <span id="director"></span></h4>
+              <h4>Writer: <span id="writer"></span></h4>
+              <h4>Actors: <span id="actors"></span></h4>
+              <h4>Language: <span id="lang"></span></h4>
+              <h4>Country: <span id="country"></span></h4>
+              <h4>Awards: <span id="awards"></span></h4>
+              <h4>MetaScore: <span id="metascore"></span></h4>
+              <h4>IMDB Rating: <span id="imdbrating"></span></h4>
+              <h4>IMDB Votes: <span id="imdbvotes"></span></h4>
+              <h4>Type: <span id="type"></span></h4>
+              <h4 id="totalseason">Total Seasons: <span id="tSeasons"></span></h4>
+            </div>
         </div>
 
          <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
