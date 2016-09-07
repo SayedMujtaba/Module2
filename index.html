@@ -1,70 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>OMDB API</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-       
-        <!--Boostrap's CSS-->
-        <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-        <!--Custom CSS-->
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
-    </head>
-    <body>
-    
-        <div class="wrapper" id="page-container">
-            <h2 id="page-header"> OMDB - Movies and Shows Reviews</h2>
 
-            <div class="float-left" id="sidePanel">
-              <form role="search" id="searchByTitle" onsubmit="return false;" action="action_page.php">
-                <fieldset>
-                  <legend>Search by Title</legend>
-                </fieldset>
-                <div class="form-group">
-                    <label for="t">Title:</label>
-                    <input type="text" class="form-control" name="t" id="t" placeholder="Required" required>
-                    <label for="y">Year:</label>
-                    <input type="number" class="form-control" name="y" id="y" placeholder="Optional" min="1990" maxlength="2016">
-                    <label for="plot">Plot:</label>
-                    <br/>
-                    <select name="plot" id="plot">
+<head>
+  <title>OMDB API</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--Boostrap's CSS-->
+  <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <!--Custom CSS-->
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+
+  <div class="container" id="page-container">
+    <h2 id="page-header"> OMDB - Movies and Shows Reviews</h2>
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" id="sidePanel">
+        <form role="search" id="searchByTitle" onsubmit="return false;" action="action_page.php">
+          <fieldset>
+            <legend>Search by Title</legend>
+          </fieldset>
+          <div class="form-group">
+            <label for="t">Title:</label>
+            <input type="text" class="form-control" name="t" id="t" placeholder="Required" required>
+            <label for="y">Year:</label>
+            <input type="number" class="form-control" name="y" id="y" placeholder="Optional" min="1990" maxlength="2016">
+            <label for="plot">Plot:</label>
+            <br/>
+            <select name="plot" id="plot">
                       <option value="short" selected>Short</option>
                       <option value="full">Full</option>                     
                     </select>
-                    <br/>
-                    <button type="button" class="btn-sm btn-primary" id="btnSearch-title"><span class="glyphicon glyphicon-search"></span> Serach</button>
-                    <button type="reset" class="btn-sm" id="btnReset-title"> Reset</button>
-                </div>
-              </form>
-            </div>
+            <br/>
+            <button type="button" class="btn-sm btn-primary" id="btnSearch-title"><span class="glyphicon glyphicon-search"></span> Serach</button>
+            <button type="reset" class="btn-sm" id="btnReset-title"> Reset</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 well well-sm" id="output" style="visibility: hidden">
+        <h2>Title: <span id="title"></span> </h2>
+        <img src="" alt="Poster" id="poster" width="300" height="427">
+        <h4>Plot: <span id="story"></span></h4>
+        <h4>Year: <span id="year"></span></h4>
+        <h4>Released: <span id="released"></span></h4>
+        <h4>Rated: <span id="rated"></span></h4>
+        <h4>Genre: <span id="genre"></span></h4>
+        <h4>Runtime: <span id="runtime"></span></h4>
+        <h4>Director: <span id="director"></span></h4>
+        <h4>Writer: <span id="writer"></span></h4>
+        <h4>Actors: <span id="actors"></span></h4>
+        <h4>Language: <span id="lang"></span></h4>
+        <h4>Country: <span id="country"></span></h4>
+        <h4>Awards: <span id="awards"></span></h4>
+        <h4>MetaScore: <span id="metascore"></span></h4>
+        <h4>IMDB Rating: <span id="imdbrating"></span></h4>
+        <h4>IMDB Votes: <span id="imdbvotes"></span></h4>
+        <h4>Type: <span id="type"></span></h4>
+        <h4 id="totalseason">Total Seasons: <span id="tSeasons"></span></h4>
+      </div>
+      <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" id="videoPlayer">
+        <p>I am a movie fanatic. When friends want to know what picture won the Oscar in 1980 or who played the police chief
+          in Jaws, they ask me. My friends, though, have stopped asking me if I want to go out to the movies. The problems
+          in getting to the theater, the theater itself, and the behavior of some patrons are all reasons why I often wait
+          for a movie to show up on TV.
+        </p>
+      </div>
+    </div>
 
-            <div class="float-right well well-sm" id="output" style="visibility: hidden">
-              <h2>Title: <span id="title"></span> </h2>
-              <img src="" alt="Poster" id="poster">
-              <h4>Plot: <span id="story"></span></h4>
-              <h4>Year: <span id="year"></span></h4>
-              <h4>Released: <span id="released"></span></h4>
-              <h4>Rated: <span id="rated"></span></h4>
-              <h4>Genre: <span id="genre"></span></h4>
-              <h4>Runtime: <span id="runtime"></span></h4>
-              <h4>Director: <span id="director"></span></h4>
-              <h4>Writer: <span id="writer"></span></h4>
-              <h4>Actors: <span id="actors"></span></h4>
-              <h4>Language: <span id="lang"></span></h4>
-              <h4>Country: <span id="country"></span></h4>
-              <h4>Awards: <span id="awards"></span></h4>
-              <h4>MetaScore: <span id="metascore"></span></h4>
-              <h4>IMDB Rating: <span id="imdbrating"></span></h4>
-              <h4>IMDB Votes: <span id="imdbvotes"></span></h4>
-              <h4>Type: <span id="type"></span></h4>
-              <h4 id="totalseason">Total Seasons: <span id="tSeasons"></span></h4>
-            </div>
-        </div>
+  </div>
 
-         <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-    
+  <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
 
-   <!-- <script>
+
+  <!-- <script>
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
@@ -109,7 +119,7 @@
 
 
 
-         <!-- 
+  <!-- 
             NB: You generally do not want to publically expose the server structure (eg. ./node_modules/...)
             will sort that in later bootcamps with task-runners and the like.
             For now this is just a demonstration.
@@ -117,11 +127,12 @@
             Alternatively can use CDNs for bootstrap/jquery
         -->
 
-        <!--jQuery Script-->
-        <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-        <!--Bootstrap Script-->
-        <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!--Custom Script-->
-        <script src="./js/main.js"></script>
-    </body>
+  <!--jQuery Script-->
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <!--Bootstrap Script-->
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!--Custom Script-->
+  <script src="./js/main.js"></script>
+</body>
+
 </html>

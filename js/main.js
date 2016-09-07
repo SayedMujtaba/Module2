@@ -1,6 +1,7 @@
 var form = $("#searchByTitle");
 var btnSearch = $("#btnSearch-title")[0];
 var btnReset = $("#btnReset-title")[0];
+var storeResult;
 var output = $("#output")[0];
 var OMDB = (function () {
     function OMDB(data) {
@@ -73,7 +74,7 @@ btnSearch.onclick = function () {
     var userdata = form.serialize();
     console.log(userdata.length);
     sendOmdbRequest(userdata, function (omdbResult) {
-        var storeResult = new OMDB(omdbResult);
+        storeResult = new OMDB(omdbResult);
         if (storeResult.response == true) {
             output.style.visibility = "visible";
             showOutput(storeResult);
@@ -94,5 +95,32 @@ function sendOmdbRequest(userdata, callback) {
         callback(movie);
     }).fail(function (error) {
         console.log(error.getAllResponseHeaders());
+    });
+}
+function sendVideoRequest(name, callback) {
+    var params = {
+        // Request parameters
+        "q": name,
+        "count": "10",
+        "offset": "0",
+        "mkt": "en-us",
+        "safeSearch": "Moderate",
+    };
+    $.ajax({
+        url: "https://api.cognitive.microsoft.com/bing/v5.0/videos/search?" + $.param(params),
+        beforeSend: function (xhrObj) {
+            // Request headers
+            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "d0ead265b3564c13870e41c9d67fde0f");
+        },
+        type: "GET",
+        // Request body
+        data: "{body}",
+    })
+        .done(function (data) {
+        console.log(data);
+        alert("success");
+    })
+        .fail(function () {
+        alert("error");
     });
 }
