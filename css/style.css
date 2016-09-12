@@ -16,56 +16,95 @@ html {
 }
 
 body #page-container {
-    text-align: center;
-    width: auto;
-    margin: 10px;
-    
+    margin: 10px; 
 }
-body #sidePanel{
-    width: auto;
-   text-align: center;
-}
-body #output{
-    text-align: left;
-    padding: 20px;
-    color: sandybrown;
-}
+
 body{
     color: white;
     background-color: transparent;  
 }
 
-form#searchByTitle{
-    margin-top: 20%;
-    text-align: left;
-    margin-bottom: 20%;
+/*Height is set so #sidePanel can be full size*/
+.row.content {
+    height: 450px
 }
+/*Set text alignment, padding and height*/
+body #sidePanel{
+    text-align: left;
+    padding-top: 20px;
+    height: 100%;
+}
+
+body #videoPlayer{
+    padding-top: 20px;
+    height: 100%;
+}
+
 .well{
-    margin: 25px;
+    margin: 15px;
     background-color:rgba(0, 0, 0, 0.5);
 }
 
-.well span{
+/* On small screens, set height to 'auto' for body #sidePanel and grid */
+    @media screen and (max-width: 767px) {
+      body #sidePanel {
+        height: auto;
+        padding: 15px;
+      }
+      
+      .row.content {height:auto;}
+    }
+
+footer {
+      background-color: rgba(60, 150, 100, 0.5);
+      color: white;
+      padding: 15px;
+}
+
+body #output{
+    text-align: left;
+    color: sandybrown;
+}
+
+.jumbotron{
+    background-color:rgba(0, 0, 0, 0.5);
+}
+
+.jumbotron span{
     color: white;
 }
 
-h2 #page-header {
+h2#page-header {
+    color: sandybrown;
     padding-top:20px;
     padding-bottom:20px;
+    
 }
+
+select#plot{
+    color: black;
+    width: 130px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
 legend{
     color: sandybrown;
 }
+
 label{
     color: sandybrown;
     padding: 5px;
 }
+
 input{
      color: black;
 }
+
+
 /*-----------Makes side panel more interactive------------ */
-/*input[type=text] {
-    width: 130px;
+input[type=text] {
+    width: 90%;;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -82,7 +121,7 @@ input[type=text]:focus {
 }
 
 input[type=number] {
-    width: 130px;
+    width: 90%;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -96,11 +135,5 @@ input[type=number] {
 
 input[type=number]:focus {
     width: 100%;
-}*/
-/*----------------------------------------------------------*/
-select#plot{
-    color: black;
-    width: 130px;
-    padding: 5px;
-    margin-bottom: 10px;
 }
+/*----------------------------------------------------------*/

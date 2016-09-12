@@ -1,6 +1,7 @@
 var form = $("#searchByTitle");
 var btnSearch = $("#btnSearch-title")[0];
 var btnReset = $("#btnReset-title")[0];
+var linkReadReview = $("#readReviews")[0];
 var storeResult;
 var output = $("#output")[0];
 var OMDB = (function () {
@@ -71,10 +72,33 @@ function showOutput(data) {
         document.getElementById("tSeasons").style.visibility = "hidden";
     }
 }
-btnReset.onclick = function () {
+/*btnReset.onclick = function ():void{
     form.remove;
-    output.style.visibility = "hidden";
-};
+     output.style.visibility = "hidden";
+      
+}
+linkReadReview.onclick = function():void{
+    console.log(storeResult.imdbID);
+    redirectToReviews(storeResult.imdbID);
+}
+
+function redirectToReviews(imdbId):void{
+    document.getElementById("readReviews").innerHTML = "http://www.imdb.com/title/"+imdbId+"/reviews?ref_=tt_ql_3";
+}*/
+function init() {
+    var m = "t=Avatar&y=2009&plot=short";
+    sendOmdbRequest(m, function (omdbResult) {
+        storeResult = new OMDB(omdbResult);
+        if (storeResult.response == true) {
+            output.style.visibility = "visible";
+            showOutput(storeResult);
+            getTrialer(storeResult.title, storeResult.year);
+        }
+        else {
+            alert("Please make sure title field is not empty. Error message: " + storeResult.error);
+        }
+    });
+}
 btnSearch.onclick = function () {
     var userdata = form.serialize();
     console.log(userdata);
@@ -83,6 +107,7 @@ btnSearch.onclick = function () {
         if (storeResult.response == true) {
             output.style.visibility = "visible";
             showOutput(storeResult);
+            getTrialer(storeResult.title, storeResult.year);
             console.log(omdbResult);
         }
         else {
@@ -90,6 +115,14 @@ btnSearch.onclick = function () {
         }
     });
 };
+function getTrialer(t, y) {
+    var url = 'http://www.youtube.com/embed?listType=search&list=';
+    var searchQuery = t + " year " + y + " trialer";
+    var targetUrl = url + searchQuery;
+    var ifr = document.getElementById('yPlayer');
+    ifr.src = targetUrl;
+    return false;
+}
 function sendOmdbRequest(userdata, callback) {
     $.ajax({
         url: "http://www.omdbapi.com/?" + userdata,
@@ -101,32 +134,5 @@ function sendOmdbRequest(userdata, callback) {
         callback(movie);
     }).fail(function (error) {
         console.log(error.getAllResponseHeaders());
-    });
-}
-function sendVideoRequest(name, callback) {
-    var params = {
-        // Request parameters
-        "q": name,
-        "count": "10",
-        "offset": "0",
-        "mkt": "en-us",
-        "safeSearch": "Moderate",
-    };
-    $.ajax({
-        url: "https://api.cognitive.microsoft.com/bing/v5.0/videos/search?" + $.param(params),
-        beforeSend: function (xhrObj) {
-            // Request headers
-            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "d0ead265b3564c13870e41c9d67fde0f");
-        },
-        type: "GET",
-        // Request body
-        data: "{body}",
-    })
-        .done(function (data) {
-        console.log(data);
-        alert("success");
-    })
-        .fail(function () {
-        alert("error");
     });
 }
