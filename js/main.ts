@@ -43,7 +43,6 @@ class OMDB {
             this.language = data.Language;
             this.country = data.Country;
             this.awards = data.Awards;
-            this.poster = data.Poster;
             this.metascore = data.Metascore;
             this.imdbRating = data.imdbRating;
             this.imdbVotes = data.imdbVotes;
@@ -51,6 +50,11 @@ class OMDB {
             this.type = data.Type;
             this.tSeason = data.totalSeasons;
             this.response = true;
+            if(data.Poster != "N/A"){
+                this.poster = data.Poster;
+            }else{
+                this.poster = "images/default_poster.jpg";
+            }
         }else{
             this.error = data.Error;
             console.log(this.error);
@@ -93,12 +97,13 @@ btnReset.onclick = function ():void{
 
 btnSearch.onclick = function ():void{ 
     var userdata = form.serialize();
-    console.log(userdata.length);
+    console.log(userdata);
     sendOmdbRequest(userdata, function(omdbResult){
        storeResult = new OMDB(omdbResult);
       if(storeResult.response == true){
          output.style.visibility = "visible";
          showOutput(storeResult);
+         console.log(omdbResult);
      /* sendVideoRequest(storeResult.title, function(){
 
       });*/
