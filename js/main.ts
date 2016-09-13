@@ -69,6 +69,7 @@ class OMDB {
         }
     }
 }
+/* Show data from IMDB server*/
 function showOutput(data): void {
     document.getElementById("title").innerText = data.title;
     imgPoster.src = data.poster;
@@ -88,7 +89,7 @@ function showOutput(data): void {
     document.getElementById("imdbvotes").innerText = data.imdbVotes;
     document.getElementById("type").innerText = data.type;
     document.getElementById("year").innerText = data.year;
-    if (data.type != "movie") {
+    if (data.type != "movie") {//depanding on search query show the totalseason heading 
         document.getElementById("tSeasons").style.visibility = "visible";
         document.getElementById("totalseason").style.visibility = "visible";
         document.getElementById("tSeasons").innerText = data.tSeason;
@@ -97,6 +98,8 @@ function showOutput(data): void {
         document.getElementById("tSeasons").style.visibility = "hidden";
     }
 }
+
+/* */
 function redirectToReviews(imdbId): void {
     linkReadReview.href = "http://www.imdb.com/title/" + imdbId + "/reviews?ref_=tt_ql_3";
 }

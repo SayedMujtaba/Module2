@@ -48,6 +48,7 @@ var OMDB = (function () {
     }
     return OMDB;
 }());
+/* Show data from IMDB server*/
 function showOutput(data) {
     document.getElementById("title").innerText = data.title;
     imgPoster.src = data.poster;
@@ -77,6 +78,7 @@ function showOutput(data) {
         document.getElementById("tSeasons").style.visibility = "hidden";
     }
 }
+/* */
 function redirectToReviews(imdbId) {
     linkReadReview.href = "http://www.imdb.com/title/" + imdbId + "/reviews?ref_=tt_ql_3";
 }
