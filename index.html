@@ -17,8 +17,8 @@
   <div class="container-fluid text-center" id="page-container">
     <h2 id="page-header"> OMDB - Movies and Shows Reviews</h2>
     <div class="row content">
-      <div class="col-sm-2" id="sidePanel">
-        <form role="search" id="searchByTitle" onsubmit="return false;" action="action_page.php">
+      <div class="col-sm-3" id="sidePanel">
+        <form role="search" id="searchByTitle" onsubmit="return false;">
           <fieldset>
             <legend>Search by Title</legend>
           </fieldset>
@@ -39,7 +39,7 @@
           </div>
         </form>
       </div>
-      <div class="col-sm-6  jumbotron" id="output" style="visibility: hidden">
+      <div class="col-sm-6  jumbotron" id="output">
         <h2>Title: <span id="title"></span> </h2>
         <img src="" class="img-responsive" alt="Poster" id="poster" width="300" height="427">
         <h4>Plot: <span id="story"></span></h4>
@@ -70,7 +70,7 @@
           <a href="http://www.imdb.com">Go to IMDB</a>
         </div>
         <div class="well">
-          <a id="readReviews" href="">Read IMDB reviews</a>
+          <a id="readReviews" href="#">Read IMDB reviews</a>
         </div>
       </div>
     </div>

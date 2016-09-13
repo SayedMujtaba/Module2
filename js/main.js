@@ -1,7 +1,12 @@
+/*Buttons and Forms tags*/
 var form = $("#searchByTitle");
 var btnSearch = $("#btnSearch-title")[0];
 var btnReset = $("#btnReset-title")[0];
+/*Link to redirect to imdb website reviews*/
 var linkReadReview = $("#readReviews")[0];
+/*image tag for showing movies and shows poster */
+var imgPoster = $("#poster")[0];
+/*Global varible*/
 var storeResult;
 var output = $("#output")[0];
 var OMDB = (function () {
@@ -45,7 +50,7 @@ var OMDB = (function () {
 }());
 function showOutput(data) {
     document.getElementById("title").innerText = data.title;
-    document.getElementById("poster").src = data.poster;
+    imgPoster.src = data.poster;
     document.getElementById("story").innerText = data.plot;
     document.getElementById("released").innerText = data.released;
     document.getElementById("rated").innerText = data.rated;
@@ -72,27 +77,19 @@ function showOutput(data) {
         document.getElementById("tSeasons").style.visibility = "hidden";
     }
 }
-/*btnReset.onclick = function ():void{
-    form.remove;
-     output.style.visibility = "hidden";
-      
+function redirectToReviews(imdbId) {
+    linkReadReview.href = "http://www.imdb.com/title/" + imdbId + "/reviews?ref_=tt_ql_3";
 }
-linkReadReview.onclick = function():void{
-    console.log(storeResult.imdbID);
-    redirectToReviews(storeResult.imdbID);
-}
-
-function redirectToReviews(imdbId):void{
-    document.getElementById("readReviews").innerHTML = "http://www.imdb.com/title/"+imdbId+"/reviews?ref_=tt_ql_3";
-}*/
 function init() {
     var m = "t=Avatar&y=2009&plot=short";
     sendOmdbRequest(m, function (omdbResult) {
         storeResult = new OMDB(omdbResult);
         if (storeResult.response == true) {
-            output.style.visibility = "visible";
             showOutput(storeResult);
             getTrialer(storeResult.title, storeResult.year);
+            linkReadReview.onclick = function () {
+                redirectToReviews(storeResult.imdbID);
+            };
         }
         else {
             alert("Please make sure title field is not empty. Error message: " + storeResult.error);
@@ -105,9 +102,11 @@ btnSearch.onclick = function () {
     sendOmdbRequest(userdata, function (omdbResult) {
         storeResult = new OMDB(omdbResult);
         if (storeResult.response == true) {
-            output.style.visibility = "visible";
             showOutput(storeResult);
             getTrialer(storeResult.title, storeResult.year);
+            linkReadReview.onclick = function () {
+                redirectToReviews(storeResult.imdbID);
+            };
             console.log(omdbResult);
         }
         else {
@@ -119,7 +118,7 @@ function getTrialer(t, y) {
     var url = 'http://www.youtube.com/embed?listType=search&list=';
     var searchQuery = t + " year " + y + " trialer";
     var targetUrl = url + searchQuery;
-    var ifr = document.getElementById('yPlayer');
+    var ifr = $("#yPlayer")[0];
     ifr.src = targetUrl;
     return false;
 }
