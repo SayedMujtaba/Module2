@@ -14,6 +14,7 @@ html {
   background-size: cover; }
 
 body {
+  font-family: Papyrus,fantasy;
   color: white;
   background-color: transparent; }
   body #page-container {
@@ -53,11 +54,14 @@ footer {
 body #output {
   text-align: left;
   color: sandybrown; }
+  body #output #TitleImg {
+    text-align: center; }
 
 .jumbotron {
   background-color: rgba(0, 0, 0, 0.5); }
   .jumbotron span {
-    color: white; }
+    color: white;
+    font-family: Copperplate,"Copperplate Gothic Light",fantasy; }
 
 h2#page-header {
   color: sandybrown;

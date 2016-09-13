@@ -16,6 +16,7 @@ html {
 }
 
 body {
+    font-family: Papyrus,fantasy;
   #page-container {
     margin: 10px;
   }
@@ -68,12 +69,16 @@ footer {
 body #output {
   text-align: left;
   color: sandybrown;
+  #TitleImg{
+      text-align: center;
+  }
 }
 
 .jumbotron {
   background-color: rgba(0, 0, 0, 0.5);
   span {
     color: white;
+    font-family: Copperplate,"Copperplate Gothic Light",fantasy
   }
 }
 
