@@ -10,6 +10,17 @@
   <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
   <!--Custom CSS-->
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
+ 
+ <script type="text/javascript">
+  var appInsights=window.appInsights||function(config){
+    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;s.src=config.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(s);try{t.cookie=u.cookie}catch(h){}for(t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Dependency"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t
+    }({
+        instrumentationKey:"0a1ad954-efac-4aef-98eb-a8c7ec5cba27"
+    });
+       
+    window.appInsights=appInsights;
+    appInsights.trackPageView();
+</script>
 </head>
 
 <body onload="init();">
@@ -35,7 +46,7 @@
                     </select>
             <br/>
             <button type="submit" class="btn btn-info" id="btnSearch-title"><span class="glyphicon glyphicon-search"></span> Search</button>
-            <button type="reset" class="btn " id="btnReset-title"><span class="glyphicon glyphicon-warning-sign"></span> Reset</button>
+            <button type="reset" class="btn " id="btnReset-title"> Reset</button>
           </div>
         </form>
       </div>
@@ -64,7 +75,7 @@
       </div>
       <div class="col-sm-3" id="videoPlayer">
         <div class="well">
-          <div class=" embed-responsive embed-responsive-16by9">
+          <div class="embed-responsive embed-responsive-16by9">
             <iframe class=" embed-responsive-item" src="" id="yPlayer">></iframe>
           </div>
         </div>
@@ -88,11 +99,11 @@
         -->
 
   <!--jQuery Script-->
-  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-  <!--Bootstrap Script-->
-  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+   <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+        <!--Bootstrap Script-->
+        <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <!--Custom Script-->
-  <script src="./js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
