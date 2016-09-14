@@ -4,11 +4,8 @@ var btnSearch = $("#btnSearch-title")[0];
 var btnReset = $("#btnReset-title")[0];
 /*Link to redirect to imdb website reviews*/
 var linkReadReview = $("#readReviews")[0];
-/*image tag for showing movies and shows poster */
-var imgPoster = $("#poster")[0];
 /*Global varible*/
 var storeResult;
-var output = $("#output")[0];
 var OMDB = (function () {
     function OMDB(data) {
         this.data = data;
@@ -50,32 +47,32 @@ var OMDB = (function () {
 }());
 /* Show data from IMDB server*/
 function showOutput(data) {
-    document.getElementById("title").innerText = data.title;
-    imgPoster.src = data.poster;
-    document.getElementById("story").innerText = data.plot;
-    document.getElementById("released").innerText = data.released;
-    document.getElementById("rated").innerText = data.rated;
-    document.getElementById("genre").innerText = data.genre;
-    document.getElementById("runtime").innerText = data.runtime;
-    document.getElementById("director").innerText = data.director;
-    document.getElementById("writer").innerText = data.writer;
-    document.getElementById("actors").innerText = data.actor;
-    document.getElementById("lang").innerText = data.language;
-    document.getElementById("country").innerText = data.country;
-    document.getElementById("awards").innerText = data.awards;
-    document.getElementById("metascore").innerText = data.metascore;
-    document.getElementById("imdbrating").innerText = data.imdbRating;
-    document.getElementById("imdbvotes").innerText = data.imdbVotes;
-    document.getElementById("type").innerText = data.type;
-    document.getElementById("year").innerText = data.year;
+    $("#title").text(data.title);
+    $("#poster").attr("src", data.poster);
+    $("#story").text(data.plot);
+    $("#released").text(data.released);
+    $("#rated").text(data.rated);
+    $("#genre").text(data.genre);
+    $("#runtime").text(data.runtime);
+    $("#director").text(data.director);
+    $("#writer").text(data.writer);
+    $("#actors").text(data.actor);
+    $("#lang").text(data.language);
+    $("#country").text(data.country);
+    $("#awards").text(data.awards);
+    $("#metascore").text(data.metascore);
+    $("#imdbrating").text(data.imdbRating);
+    $("#imdbvotes").text(data.imdbVotes);
+    $("#type").text(data.type);
+    $("#year").text(data.year);
     if (data.type != "movie") {
-        document.getElementById("tSeasons").style.visibility = "visible";
-        document.getElementById("totalseason").style.visibility = "visible";
-        document.getElementById("tSeasons").innerText = data.tSeason;
+        $("#tSeasons").attr("style", "visibility: visible");
+        $("#totalseason").attr("style", "visibility: visible");
+        $("#tSeasons").text(data.tSeason);
     }
     else {
-        document.getElementById("totalseason").style.visibility = "hidden";
-        document.getElementById("tSeasons").style.visibility = "hidden";
+        $("#totalseason").attr("style", "visibility: hidden");
+        $("#tSeasons").attr("style", "visibility: hidden");
     }
 }
 /* */
