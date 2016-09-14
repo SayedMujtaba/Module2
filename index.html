@@ -9,13 +9,13 @@
   <!--Boostrap's CSS-->
   <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
   <!--Custom CSS-->
-  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
 
 <body onload="init();">
 
   <div class="container-fluid text-center" id="page-container">
-    <h2 id="page-header"> OMDB - Movies and Shows Reviews</h2>
+    <h2 id="page-header"> IMDB - Movies and Shows Reviews</h2>
     <div class="row content">
       <div class="col-sm-3" id="sidePanel">
         <form class="well" role="search" id="searchByTitle" onsubmit="return false;">
@@ -40,8 +40,10 @@
         </form>
       </div>
       <div class="col-sm-6  jumbotron" id="output">
-        <h2>Title: <span id="title"></span> </h2>
-        <img src="" class="img-responsive" alt="Poster" id="poster" width="300" height="427">
+        <div id="TitleImg">
+          <h2>Title: <span id="title"></span> </h2>
+          <img src=""  alt="Poster" id="poster" width="300" height="427">
+        </div>
         <h4>Plot: <span id="story"></span></h4>
         <h4>Year: <span id="year"></span></h4>
         <h4>Released: <span id="released"></span></h4>
@@ -76,9 +78,7 @@
     </div>
 
   </div>
-  <footer class="container-fluid text-center">
-    <p>Footer Text</p>
-  </footer>
+
   <!-- 
             NB: You generally do not want to publically expose the server structure (eg. ./node_modules/...)
             will sort that in later bootcamps with task-runners and the like.

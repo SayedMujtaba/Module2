@@ -6,16 +6,12 @@ var btnReset = $("#btnReset-title")[0];
 /*Link to redirect to imdb website reviews*/
 var linkReadReview: HTMLLinkElement = <HTMLLinkElement>$("#readReviews")[0];
 
-/*image tag for showing movies and shows poster */
-var imgPoster: HTMLImageElement = <HTMLImageElement>$("#poster")[0];
-
 /*Global varible*/
 var storeResult: OMDB;
 
-var output = $("#output")[0];
 class OMDB {
     title: string;
-    year: string;
+    year: number;
     rated: string;
     released: string;
     runtime: string;
@@ -33,7 +29,7 @@ class OMDB {
     imdbVotes: number;
     imdbID: string;
     type: string;
-    tSeason: string;
+    tSeason: number;
     response: boolean = false;
     error: string;
     constructor(public data) {
@@ -65,37 +61,38 @@ class OMDB {
             }
         } else {
             this.error = data.Error;
+            alert(this.error);
             console.log(this.error);
         }
     }
 }
 /* Show data from IMDB server*/
 function showOutput(data): void {
-    document.getElementById("title").innerText = data.title;
-    imgPoster.src = data.poster;
-    document.getElementById("story").innerText = data.plot;
-    document.getElementById("released").innerText = data.released;
-    document.getElementById("rated").innerText = data.rated;
-    document.getElementById("genre").innerText = data.genre;
-    document.getElementById("runtime").innerText = data.runtime;
-    document.getElementById("director").innerText = data.director;
-    document.getElementById("writer").innerText = data.writer;
-    document.getElementById("actors").innerText = data.actor;
-    document.getElementById("lang").innerText = data.language;
-    document.getElementById("country").innerText = data.country;
-    document.getElementById("awards").innerText = data.awards;
-    document.getElementById("metascore").innerText = data.metascore;
-    document.getElementById("imdbrating").innerText = data.imdbRating;
-    document.getElementById("imdbvotes").innerText = data.imdbVotes;
-    document.getElementById("type").innerText = data.type;
-    document.getElementById("year").innerText = data.year;
+    $("#title").text(data.title);
+    $("#poster").attr("src", data.poster);
+    $("#story").text(data.plot) ;
+    $("#released").text (data.released);
+    $("#rated").text(data.rated);
+    $("#genre").text(data.genre);
+    $("#runtime").text(data.runtime) ;
+    $("#director").text(data.director);
+    $("#writer").text(data.writer);
+    $("#actors").text(data.actor);
+    $("#lang").text(data.language) ;
+    $("#country").text(data.country);
+    $("#awards").text(data.awards);
+    $("#metascore").text(data.metascore);
+    $("#imdbrating").text(data.imdbRating);
+    $("#imdbvotes").text(data.imdbVotes);
+    $("#type").text(data.type) ;
+    $("#year").text(data.year);
     if (data.type != "movie") {//depanding on search query show the totalseason heading 
-        document.getElementById("tSeasons").style.visibility = "visible";
-        document.getElementById("totalseason").style.visibility = "visible";
-        document.getElementById("tSeasons").innerText = data.tSeason;
+        $("#tSeasons").attr("style", "visibility: visible");
+        $("#totalseason").attr("style", "visibility: visible");
+        $("#tSeasons").text(data.tSeason);
     } else {
-        document.getElementById("totalseason").style.visibility = "hidden";
-        document.getElementById("tSeasons").style.visibility = "hidden";
+        $("#totalseason").attr("style", "visibility: hidden");
+        $("#tSeasons").attr("style", "visibility: hidden");
     }
 }
 
@@ -121,7 +118,6 @@ function init(): void {
 
 btnSearch.onclick = function (): void {
     var userdata = form.serialize();
-    console.log(userdata);
     sendOmdbRequest(userdata, function (omdbResult) {
         storeResult = new OMDB(omdbResult);
         if (storeResult.response == true) {
@@ -130,13 +126,12 @@ btnSearch.onclick = function (): void {
             linkReadReview.onclick = function (): void {
                 redirectToReviews(storeResult.imdbID);
             }
-            console.log(omdbResult);
         } else {
             alert("Please make sure title field is not empty. Error message: " + storeResult.error);
         }
     });
 }
-function getTrialer(t, y) {
+function getTrialer(t:string, y:number) {
     var url = 'http://www.youtube.com/embed?listType=search&list=';
     var searchQuery = t + " year " + y + " trialer";
     var targetUrl = url + searchQuery;
