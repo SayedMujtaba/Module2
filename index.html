@@ -10,7 +10,7 @@
   <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
   <!--Custom CSS-->
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
- 
+ <!--Application Insight-->
  <script type="text/javascript">
   var appInsights=window.appInsights||function(config){
     function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;s.src=config.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(s);try{t.cookie=u.cookie}catch(h){}for(t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Dependency"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t
@@ -22,12 +22,13 @@
     appInsights.trackPageView();
 </script>
 </head>
-
+<!-- init() shows the default movie review-->
 <body onload="init();">
 
   <div class="container-fluid text-center" id="page-container">
     <h2 id="page-header"> IMDB - Movies and Shows Reviews</h2>
     <div class="row content">
+      <!-- Sidepanel contain three input field to retrive user data-->
       <div class="col-sm-3" id="sidePanel">
         <form class="well" role="search" id="searchByTitle" onsubmit="return false;">
           <fieldset>
@@ -50,6 +51,7 @@
           </div>
         </form>
       </div>
+      <!--Display data from api call-->
       <div class="col-sm-6  jumbotron" id="output">
         <div id="TitleImg">
           <h2>Title: <span id="title"></span> </h2>
@@ -73,6 +75,7 @@
         <h4>Type: <span id="type"></span></h4>
         <h4 id="totalseason">Total Seasons: <span id="tSeasons"></span></h4>
       </div>
+      <!--Ifram for youtub player showing trials-->
       <div class="col-sm-3" id="videoPlayer">
         <div class="well">
           <div class="embed-responsive embed-responsive-16by9">
@@ -89,14 +92,6 @@
     </div>
 
   </div>
-
-  <!-- 
-            NB: You generally do not want to publically expose the server structure (eg. ./node_modules/...)
-            will sort that in later bootcamps with task-runners and the like.
-            For now this is just a demonstration.
-
-            Alternatively can use CDNs for bootstrap/jquery
-        -->
 
   <!--jQuery Script-->
    <script src="./node_modules/jquery/dist/jquery.min.js"></script>

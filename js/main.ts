@@ -8,7 +8,7 @@ var linkReadReview: HTMLLinkElement = <HTMLLinkElement>$("#readReviews")[0];
 
 /*Global varible*/
 var storeResult: OMDB;
-
+/* Class to store data retrived form omdb site  */
 class OMDB {
     title: string;
     year: number;
@@ -96,10 +96,11 @@ function showOutput(data): void {
     }
 }
 
-/* */
+/*A link on page that redirect user to imdb site which show reviews from other users.*/
 function redirectToReviews(imdbId): void {
     linkReadReview.href = "http://www.imdb.com/title/" + imdbId + "/reviews?ref_=tt_ql_3";
 }
+/*This fuction is used to load a default movie on screen when user is first visit the site*/
 function init(): void {
     var m = "t=Avatar&y=2009&plot=short";
     sendOmdbRequest(m, function (omdbResult) {
@@ -115,7 +116,8 @@ function init(): void {
         }
     });
 }
-
+/*Search button is clicked or enter is pressed on keyboard the btnSearch method is called
+which calls other methods*/
 btnSearch.onclick = function (): void {
     var userdata = form.serialize();
     sendOmdbRequest(userdata, function (omdbResult) {
@@ -131,6 +133,8 @@ btnSearch.onclick = function (): void {
         }
     });
 }
+//To find a trial for movies/shows youtube url is used to search for title and year  
+//for a movie/show. Which is than added to Ifram.
 function getTrialer(t:string, y:number) {
     var url = 'http://www.youtube.com/embed?listType=search&list=';
     var searchQuery = t + " year " + y + " trialer";
@@ -139,7 +143,7 @@ function getTrialer(t:string, y:number) {
     ifr.src = targetUrl;
     return false;
 }
-
+//Query is send to OMDB api to get data from them as json file 
 function sendOmdbRequest(userdata, callback): void {
     $.ajax({
         url: "http://www.omdbapi.com/?" + userdata,
