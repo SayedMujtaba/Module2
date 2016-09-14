@@ -40,6 +40,7 @@ var OMDB = (function () {
         }
         else {
             this.error = data.Error;
+            alert(this.error);
             console.log(this.error);
         }
     }
@@ -97,7 +98,6 @@ function init() {
 }
 btnSearch.onclick = function () {
     var userdata = form.serialize();
-    console.log(userdata);
     sendOmdbRequest(userdata, function (omdbResult) {
         storeResult = new OMDB(omdbResult);
         if (storeResult.response == true) {
@@ -106,7 +106,6 @@ btnSearch.onclick = function () {
             linkReadReview.onclick = function () {
                 redirectToReviews(storeResult.imdbID);
             };
-            console.log(omdbResult);
         }
         else {
             alert("Please make sure title field is not empty. Error message: " + storeResult.error);
