@@ -11,8 +11,8 @@
   <!--Custom CSS-->
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
 
-  <!--Application Insight-->
-  <script type="text/javascript">
+ <!--Application Insight-->
+ <script type="text/javascript">
   var appInsights=window.appInsights||function(config){
     function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;s.src=config.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(s);try{t.cookie=u.cookie}catch(h){}for(t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Dependency"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t
     }({
@@ -21,26 +21,9 @@
        
     window.appInsights=appInsights;
     appInsights.trackPageView();
-    var telemetry = new RequestTelemetry();
-// Note: A single instance of telemetry client is sufficient to track multiple telemetry items.
-var ai = new TelemetryClient();
-// At start of processing this request:
-// Operation Id and Name are attached to all telemetry and help you identify
-// telemetry associated with one request:
-telemetry.Context.Operation.Id = Guid.NewGuid().ToString();
-telemetry.Context.Operation.Name = "requestName";
-
-var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
-// ... process the request ...
-
-stopwatch.Stop();
-ai.TrackRequest("requestName", DateTime.UtcNow, stopwatch.Elapsed, "200", true);  
-// Response code, success
 </script>
 </head>
 <!-- init() shows the default movie review-->
-
 <body onload="init();">
 
   <div class="container-fluid text-center" id="page-container">
@@ -73,7 +56,7 @@ ai.TrackRequest("requestName", DateTime.UtcNow, stopwatch.Elapsed, "200", true);
       <div class="col-sm-6  jumbotron" id="output">
         <div id="TitleImg">
           <h2>Title: <span id="title"></span> </h2>
-          <img src="" alt="Poster" id="poster" width="300" height="427">
+          <img src=""  alt="Poster" id="poster" width="300" height="427">
         </div>
         <h4>Plot: <span id="story"></span></h4>
         <h4>Year: <span id="year"></span></h4>
@@ -112,9 +95,9 @@ ai.TrackRequest("requestName", DateTime.UtcNow, stopwatch.Elapsed, "200", true);
   </div>
 
   <!--jQuery Script-->
-  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-  <!--Bootstrap Script-->
-  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+   <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+        <!--Bootstrap Script-->
+        <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <!--Custom Script-->
   <script src="js/main.js"></script>
 </body>
