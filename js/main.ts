@@ -86,7 +86,7 @@ function showOutput(data): void {
     $("#imdbvotes").text(data.imdbVotes);
     $("#type").text(data.type) ;
     $("#year").text(data.year);
-    if (data.type != "movie") {//depanding on search query show the totalseason heading 
+    if (data.type != "movie") {//depanding on search query show the totalseason headding 
         $("#tSeasons").attr("style", "visibility: visible");
         $("#totalseason").attr("style", "visibility: visible");
         $("#tSeasons").text(data.tSeason);
@@ -158,3 +158,20 @@ function sendOmdbRequest(userdata, callback): void {
     });
 }
 
+//Testing app insight telemetry
+var telemetry = new RequestTelemetry();
+// Note: A single instance of telemetry client is sufficient to track multiple telemetry items.
+var ai = new TelemetryClient();
+// At start of processing this request:
+// Operation Id and Name are attached to all telemetry and help you identify
+// telemetry associated with one request:
+telemetry.Context.Operation.Id = Guid.NewGuid().ToString();
+telemetry.Context.Operation.Name = "requestName";
+
+var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+
+// ... process the request ...
+
+stopwatch.Stop();
+ai.TrackRequest("requestName", DateTime.UtcNow, stopwatch.Elapsed, "200", true);  
+// Response code, success
