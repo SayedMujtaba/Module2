@@ -69,7 +69,7 @@ class OMDB {
 /* Show data from IMDB server*/
 function showOutput(data): void {
     $("#title").text(data.title);
-    $("#poster").attr("href", data.poster);
+    $("#poster").attr("src", data.poster);
     $("#story").text(data.plot) ;
     $("#released").text (data.released);
     $("#rated").text(data.rated);
