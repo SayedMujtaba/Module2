@@ -50,7 +50,7 @@ var OMDB = (function () {
 /* Show data from IMDB server*/
 function showOutput(data) {
     $("#title").text(data.title);
-    $("#poster").attr("src", data.poster);
+    $("#poster").attr("href", data.poster);
     $("#story").text(data.plot);
     $("#released").text(data.released);
     $("#rated").text(data.rated);
